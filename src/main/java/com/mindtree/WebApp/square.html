@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+    	var number = {}
+		number["num1"] = $("#num1").val();
+		//number["num2"] = $("#num2").val(); 
+		$.ajax({
+            type: "POST",
+            contentType: "application/json",
+            dataType : 'JSON',
+             url: "http://localhost:8080/demo",
+            data: JSON.stringify(number),
+            success :function(square) {
+            $("#result").html(square);
+            }
+        });
+    });
+});
+</script>
+</head>
+<body>
+<div id="result">
+<p>Num1: <input type="text" id="num1"></p>
+<button>ADD</button>
+</div>
+
+</body>
+</html>
